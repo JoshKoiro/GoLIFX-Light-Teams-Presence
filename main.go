@@ -7,6 +7,7 @@ import (
 	"github.com/JoshKoiro/GoLIFX-Light-Teams-Presence/config"
 	"github.com/JoshKoiro/GoLIFX-Light-Teams-Presence/lifxAPI"
 	"github.com/JoshKoiro/GoLIFX-Light-Teams-Presence/teamsAPI"
+	"github.com/fatih/color"
 	"github.com/joho/godotenv"
 )
 
@@ -34,9 +35,6 @@ func updateLight() {
 	// Print the timestamp
 	getTimestamp()
 
-	// Print the teams API status
-	fmt.Printf("Status: %s\n", status.Availability)
-
 	// Read the config file
 	configuration, yamlError := config.ReadYAMLFile("config.yaml")
 	if yamlError != nil {
@@ -47,16 +45,31 @@ func updateLight() {
 	// determine the color to set the light to
 	switch status.Availability {
 	case "Available":
+		fmt.Printf("Status: ")
+		color.Green(status.Availability)
 		lifxAPI.SetLight(configuration, configuration.StatusColors.AvailableColor)
+
 	case "Away":
+		fmt.Printf("Status: ")
+		color.Yellow(status.Availability)
 		lifxAPI.SetLight(configuration, configuration.StatusColors.AwayColor)
+
 	case "Busy":
+		fmt.Printf("Status: ")
+		color.Red(status.Availability)
 		lifxAPI.SetLight(configuration, configuration.StatusColors.BusyColor)
+
 	case "DoNotDisturb":
+		fmt.Printf("Status: ")
+		color.Red(status.Availability)
 		lifxAPI.SetLight(configuration, configuration.StatusColors.DoNotDisturbColor)
 	case "BeRightBack":
+		fmt.Printf("Status: ")
+		color.Yellow(status.Availability)
 		lifxAPI.SetLight(configuration, configuration.StatusColors.BeRightBackColor)
 	case "Offline":
+		fmt.Printf("Status: ")
+		color.White(status.Availability)
 		lifxAPI.SetLight(configuration, configuration.StatusColors.OfflineColor)
 	default:
 		fmt.Printf("Unknown status: %s\n", status.Availability)
