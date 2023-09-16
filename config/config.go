@@ -2,11 +2,15 @@ package config
 
 import (
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
 
 type Config struct {
+	ApplicationSettings struct {
+		RefreshRate int `yaml:"refresh-rate"`
+	}
 	LifxAPI struct {
 		Key string `yaml:"key"`
 	} `yaml:"lifx-api"`
@@ -19,8 +23,10 @@ type Config struct {
 		OfflineColor      string `yaml:"offline-color"`
 	} `yaml:"status-colors"`
 	LightSettings struct {
+		Label            string  `yaml:"label"`
+		Id               string  `yaml:"id"`
 		Brightness       float64 `yaml:"brightness"`
-		ColorChangeSpeed int     `yaml:"color-change-speed"`
+		ColorChangeSpeed float64 `yaml:"color-change-speed"`
 	} `yaml:"light-settings"`
 }
 
@@ -36,4 +42,10 @@ func ReadYAMLFile(filepath string) (*Config, error) {
 	}
 
 	return &config, nil
+}
+
+func GetSelctorURI(filepath string) string {
+	config, _ := ReadYAMLFile(filepath)
+
+	return "label%3A" + strings.ReplaceAll(config.LightSettings.Label, " ", "%20")
 }

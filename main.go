@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/JoshKoiro/GoLIFX-Light-Teams-Presence/config"
+	"github.com/JoshKoiro/GoLIFX-Light-Teams-Presence/lifxAPI"
 	"github.com/JoshKoiro/GoLIFX-Light-Teams-Presence/teamsAPI"
 	"github.com/joho/godotenv"
 )
@@ -32,5 +33,9 @@ func main() {
 		return
 	}
 
-	fmt.Printf("Config: %+v\n", configuration.StatusColors.AvailableColor)
+	lighterror := lifxAPI.SetLight(configuration, "purple")
+	if lighterror != nil {
+		fmt.Printf("Error setting light: %s\n", lighterror)
+		return
+	}
 }

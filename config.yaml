@@ -1,5 +1,7 @@
+application-settings:
+  refresh-rate: 10 # in seconds
 lifx-api:
-  key: "ce6f2014fb7a5b9c1eb424e80d4e00285728e462dd1572175d8dce34755ddd2a"
+  key: ""
 status-colors:
   available-color: "green" # see api docs for color names and options
   busy-color: "red"
@@ -8,5 +10,7 @@ status-colors:
   be-right-back-color: "yellow"
   offline-color: "off" # to have light tun off
 light-settings:
+  label: "Status Light"
+  id: "d073d572fceb"
   brightness: 0.5 # from 0 to 1
-  color-change-speed: 3 # in seconds
+  color-change-speed: 3.0 # in seconds
