@@ -57,7 +57,7 @@ func GetStatus() (PresenceResponse, error) {
 	}
 
 	// Return response body
-	return PresenceResponse{Availability: availability, Activity: activity, StatusMessage: statusMessage}, nil
+	return PresenceResponse{Availability: availability, Activity: activity, StatusMessage: statusMessage}, err
 }
 
 func getPresence(responseJSON string) (string, string, *string, error) {
@@ -68,5 +68,5 @@ func getPresence(responseJSON string) (string, string, *string, error) {
 		return "", "", nil, err
 	}
 
-	return presence.Availability, presence.Activity, presence.StatusMessage, nil
+	return presence.Availability, presence.Activity, presence.StatusMessage, err
 }

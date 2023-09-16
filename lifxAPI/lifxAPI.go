@@ -54,8 +54,6 @@ func SetLight(configuration *config.Config, color string) error {
 	stringPayload := fmt.Sprintf("{\"duration\":%f,\"fast\":%v,\"power\":\"%s\",\"color\":\"%s\",\"brightness\":%f}",
 		duration, fast, power, color, brightness)
 
-	fmt.Println(stringPayload)
-
 	payload := strings.NewReader(stringPayload)
 
 	req, err := http.NewRequest("PUT", url, payload)
@@ -67,18 +65,11 @@ func SetLight(configuration *config.Config, color string) error {
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("Authorization", "Bearer "+configuration.LifxAPI.Key)
 
-	fmt.Println(req.Header)
-	fmt.Println(req.Body)
-
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("error making LIFX API request: %w", err)
 	}
 
 	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-	fmt.Println(res.Status)
-	fmt.Println(res.StatusCode)
-	fmt.Println(string(body))
 	return nil
 }

@@ -10,7 +10,7 @@ import (
 type Config struct {
 	ApplicationSettings struct {
 		RefreshRate int `yaml:"refresh-rate"`
-	}
+	} `yaml:"application-settings"`
 	LifxAPI struct {
 		Key string `yaml:"key"`
 	} `yaml:"lifx-api"`

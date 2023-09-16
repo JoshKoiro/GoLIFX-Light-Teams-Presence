@@ -1,5 +1,5 @@
 application-settings:
-  refresh-rate: 10 # in seconds
+  refresh-rate: 10
 lifx-api:
   key: ""
 status-colors:
@@ -12,5 +12,5 @@ status-colors:
 light-settings:
   label: "Status Light"
   id: "d073d572fceb"
-  brightness: 0.5 # from 0 to 1
-  color-change-speed: 3.0 # in seconds
+  brightness: 0.5
+  color-change-speed: 3.0
