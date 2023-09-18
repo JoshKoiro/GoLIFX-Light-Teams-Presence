@@ -24,7 +24,6 @@ type Config struct {
 	} `yaml:"status-colors"`
 	LightSettings struct {
 		Label            string  `yaml:"label"`
-		Id               string  `yaml:"id"`
 		Brightness       float64 `yaml:"brightness"`
 		ColorChangeSpeed float64 `yaml:"color-change-speed"`
 	} `yaml:"light-settings"`
