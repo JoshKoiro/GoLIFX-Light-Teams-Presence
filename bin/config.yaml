@@ -1,9 +1,9 @@
 application-settings:
   refresh-rate: 10
 lifx-api:
-  key: "ce6f2014fb7a5b9c1eb424e80d4e00285728e462dd1572175d8dce34755ddd2a"
+  key: ""
 status-colors:
-  available-color: "purple" # see api docs for color names and options
+  available-color: "green" # see api docs for color names and options
   busy-color: "red"
   do-not-disturb-color: "red"
   away-color: "off" # to have light tun off
