@@ -3,7 +3,7 @@ application-settings:
 lifx-api:
   key: ""
 status-colors:
-  available-color: "green" # see api docs for color names and options
+  available-color: "purple" # see api docs for color names and options
   busy-color: "red"
   do-not-disturb-color: "red"
   away-color: "off" # to have light tun off
