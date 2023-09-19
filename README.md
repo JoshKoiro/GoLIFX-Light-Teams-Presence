@@ -16,3 +16,5 @@ Run the application by double clicking on the icon, or by opening a terminal win
 The program acts as a server that reaches out to the graph API and updates your LIFX light every 10 seconds (by default).
 
 Customization of color, brightness and other options may be configured with the `config.yaml` file. The server is reading this file on every tick (10 seconds by default) so changes can be made without having to restart the server application.
+
+Reference the LIFX API docs for a description of the available inputs for the color parameter. https://api.developer.lifx.com/docs/colors
