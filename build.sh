@@ -1,5 +1,5 @@
 #!/bin/bash
-go build -o ./bin main.go
+go build -o ./bin/Teams-LIFX.exe main.go
 cp config.yaml ./bin/config.yaml
 touch ./bin/.env
 
