@@ -11,9 +11,8 @@ import (
 )
 
 type PresenceResponse struct {
-	Availability  string  `json:"availability"`
-	Activity      string  `json:"activity"`
-	StatusMessage *string `json:"statusMessage"` // using pointer since it can be null
+	Availability string `json:"availability"`
+	Activity     string `json:"activity"`
 }
 
 func GetStatus() (PresenceResponse, error) {
@@ -51,22 +50,22 @@ func GetStatus() (PresenceResponse, error) {
 	}
 
 	// parse response body
-	availability, activity, statusMessage, err := getPresence(string(body))
+	availability, activity, err := getPresence(string(body))
 	if err != nil {
 		return PresenceResponse{}, fmt.Errorf("error parsing response body: %w", err)
 	}
 
 	// Return response body
-	return PresenceResponse{Availability: availability, Activity: activity, StatusMessage: statusMessage}, err
+	return PresenceResponse{Availability: availability, Activity: activity}, err
 }
 
-func getPresence(responseJSON string) (string, string, *string, error) {
+func getPresence(responseJSON string) (string, string, error) {
 	var presence PresenceResponse
 
 	err := json.Unmarshal([]byte(responseJSON), &presence)
 	if err != nil {
-		return "", "", nil, err
+		return "", "", fmt.Errorf("error parsing response body: %w", err)
 	}
 
-	return presence.Availability, presence.Activity, presence.StatusMessage, err
+	return presence.Availability, presence.Activity, err
 }
